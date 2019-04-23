@@ -1,0 +1,41 @@
+.content {
+  display: flex;
+}
+
+#map {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    width: 40%;
+    background: red;
+}
+
+.cards {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
+}
+
+.card {
+    border-radius: 1px;
+    margin: 15px 10px;
+    height: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    // font-size: 25px;
+    // color: white;
+    // font-weight: bolder;
+    // text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    .card-image {
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 80%;
+    }
+
+    .card-bottom {
+      background: white;
+      width: 100%;
+      padding: 15px;
+    }
+}
