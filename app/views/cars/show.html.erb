@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @car.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @car.address %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @car.img_url %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @car.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @car.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
