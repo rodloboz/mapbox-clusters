@@ -4,7 +4,9 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    @cars = Car.where.not(latitude: nil, longitude: nil)
+
+    @geojson = build_geojson
   end
 
   # GET /cars/1
@@ -70,5 +72,12 @@ class CarsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:brand, :model, :year, :address, :img_url, :latitude, :longitude)
+    end
+
+    def build_geojson
+      {
+        type: "FeatureCollection",
+        features: @cars.map(&:to_feature)
+      }
     end
 end

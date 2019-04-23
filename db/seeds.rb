@@ -51,27 +51,26 @@ CARS = [
     img_url: 'https://res.cloudinary.com/opratododia/image/upload/v1555910960/clusters/jaguar_e-type_zero_parked.jpg'
   }
 ]
-
-portugal = [39.3999, -8.2245]
-england = [52.3342, -1.2753]
-france = [46.2276, 2.2137]
+spain = [40.4168, -3.7038]
+london = [51.5074, -0.1278]
+paris = [48.8566, 2.3522]
 
 puts "Creating cars..."
 
 rand(20..50).times do
-  latitude, longitude = RandomLocation.near_by(portugal.first, portugal.second, 70000)
+  latitude, longitude = RandomLocation.near_by(spain.first, spain.second, 20000)
   coordinates = { latitude: latitude, longitude: longitude }
   Car.create!(CARS.sample.merge(coordinates))
 end
 
 rand(20..50).times do
-  latitude, longitude = RandomLocation.near_by(england.first, england.second, 100000)
+  latitude, longitude = RandomLocation.near_by(london.first, london.second, 20000)
   coordinates = { latitude: latitude, longitude: longitude }
   Car.create!(CARS.sample.merge(coordinates))
 end
 
 rand(20..70).times do
-  latitude, longitude = RandomLocation.near_by(france.first, france.second, 4500000)
+  latitude, longitude = RandomLocation.near_by(paris.first, paris.second, 20000)
   coordinates = { latitude: latitude, longitude: longitude }
   Car.create!(CARS.sample.merge(coordinates))
 end

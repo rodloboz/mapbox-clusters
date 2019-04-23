@@ -2,5 +2,8 @@
   <div class="cards">
     <%= render @cars %>
   </div>
-  <div id="map"></div>
+  <div  id="map"
+        data-cars="<%= @geojson.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
