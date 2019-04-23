@@ -9,7 +9,7 @@ const fitMapToMarkers = (map, features) => {
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
+  if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
