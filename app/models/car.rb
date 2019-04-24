@@ -16,7 +16,11 @@ class Car < ApplicationRecord
       },
       "properties": {
         "car_id": id,
-        "name": name
+        "name": name,
+        "info_window": ApplicationController.new.render_to_string(
+          partial: "cars/infowindow",
+          locals: { car: self }
+        )
       }
     }
   end

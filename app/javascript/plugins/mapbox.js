@@ -1,3 +1,4 @@
+import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 
 const fitMapToMarkers = (map, features) => {
@@ -92,11 +93,34 @@ const initMapbox = () => {
         });
       });
 
-      map.on('mouseenter', 'clusters', function () {
+      map.on('mouseenter', 'clusters', function (e) {
         map.getCanvas().style.cursor = 'pointer';
       });
 
       map.on('mouseleave', 'clusters', function () {
+        map.getCanvas().style.cursor = '';
+      });
+
+      map.on('click', 'unclustered-point', function (e) {
+        const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
+        const infoWindow = features[0].properties.info_window;
+        const coordinates = features[0].geometry.coordinates;
+
+        map.easeTo({
+          center: features[0].geometry.coordinates
+        });
+
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(infoWindow)
+          .addTo(map);
+      });
+
+      map.on('mouseenter', 'unclustered-point', function () {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      map.on('mouseleave', 'unclustered-point', function () {
         map.getCanvas().style.cursor = '';
       });
 
